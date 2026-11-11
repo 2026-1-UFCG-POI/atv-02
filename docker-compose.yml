@@ -1,0 +1,23 @@
+services:
+  api-cpu-bound:
+    image: joaovgouveia/api-cpu-bound:latest
+    container_name: api-cpu-bound
+    restart: unless-stopped
+    ports:
+      - "8080:8000"
+
+  api-memory-bound:
+    image: joaovgouveia/api-memory-bound:latest
+    container_name: api-memory-bound
+    restart: unless-stopped
+    ports:
+      - "8081:3000"
+
+  api-io-bound:
+    image: joaovgouveia/api-io-bound:latest
+    container_name: api-io-bound
+    restart: unless-stopped
+    ports:
+      - "8082:3000"
+    volumes:
+      - ${DATA_DIR:-/opt/dados}/io-data:/app/data
